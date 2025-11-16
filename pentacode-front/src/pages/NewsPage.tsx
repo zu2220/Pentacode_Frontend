@@ -1,4 +1,3 @@
-import Header from '../components/Header';
 import { Calendar, Newspaper } from 'lucide-react';
 
 export default function NewsPage() {
@@ -38,14 +37,11 @@ export default function NewsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Noticias Electorales</h1>
-          <p className="text-gray-600">Últimas noticias y actualizaciones del proceso electoral 2026</p>
-        </div>
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold text-gray-900 mb-2">Noticias Electorales</h1>
+        <p className="text-gray-600">Últimas noticias y actualizaciones del proceso electoral 2026</p>
+      </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {news.map((article) => (
@@ -107,6 +103,5 @@ export default function NewsPage() {
           </div>
         </section>
       </main>
-    </div>
   );
 }

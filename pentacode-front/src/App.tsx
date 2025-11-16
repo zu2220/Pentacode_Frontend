@@ -1,21 +1,33 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
+import { useState } from 'react';
+import Header from './components/Header';
+import Home from './components/Home';
 import CandidatesPage from './pages/CandidatesPage';
-import CandidateDetail from './pages/CandidateDetail';
 import PartiesPage from './pages/PartiesPage';
 import NewsPage from './pages/NewsPage';
 
 function App() {
+  const [currentPage, setCurrentPage] = useState<string>('inicio');
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'inicio':
+        return <Home />;
+      case 'candidatos':
+        return <CandidatesPage />;
+      case 'partidos':
+        return <PartiesPage />;
+      case 'noticias':
+        return <NewsPage />;
+      default:
+        return <Home />;
+    }
+  };
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/candidates" element={<CandidatesPage />} />
-        <Route path="/candidate/:id" element={<CandidateDetail />} />
-        <Route path="/parties" element={<PartiesPage />} />
-        <Route path="/news" element={<NewsPage />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="min-h-screen bg-gray-50">
+      <Header currentPage={currentPage} onNavigate={setCurrentPage} />
+      {renderPage()}
+    </div>
   );
 }
 

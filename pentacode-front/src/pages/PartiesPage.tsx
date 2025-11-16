@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Search, Download, PieChart, List, X } from 'lucide-react';
-import Header from '../components/Header';
 
 // --- Colores para el Gráfico ---
 const CHART_COLORS = ['#EF4444', '#3B82F6', '#10B981', '#F59E0B', '#6366F1', '#EC4899'];
@@ -295,18 +294,16 @@ export default function PartiesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-
+    <>
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-12">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Explora los Partidos Políticos</h1>
-          <p className="text-lg text-gray-600 mb-6">
-            Compara los planes de gobierno de cada partido de forma fácil y visual
-          </p>
-          <div className="relative mb-6">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="text-gray-400" size={20} />
+        <p className="text-lg text-gray-600 mb-6">
+          Compara los planes de gobierno de cada partido de forma fácil y visual
+        </p>
+        <div className="relative mb-6">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <Search className="text-gray-400" size={20} />
             </div>
             <input
               type="text"
@@ -392,6 +389,6 @@ export default function PartiesPage() {
       {isModalOpen && selectedParty && (
         <PartyModal party={selectedParty} onClose={handleCloseModal} />
       )}
-    </div>
+    </>
   );
 }
