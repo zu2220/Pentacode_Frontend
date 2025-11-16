@@ -1,12 +1,26 @@
 import { Search } from 'lucide-react';
 
-export default function Header() {
+interface HeaderProps {
+  currentPage?: string;
+  onNavigate?: (page: string) => void;
+}
+
+export default function Header({ currentPage = 'inicio', onNavigate }: HeaderProps) {
+  const handleNavigation = (page: string) => {
+    if (onNavigate) {
+      onNavigate(page);
+    }
+  };
+
   return (
     <header className="bg-white shadow-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-8">
-            <div className="flex items-center space-x-2">
+            <div 
+              className="flex items-center space-x-2 cursor-pointer" 
+              onClick={() => handleNavigation('inicio')}
+            >
               <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center">
                 <span className="text-white text-xl">✦</span>
               </div>
@@ -16,32 +30,49 @@ export default function Header() {
             </div>
 
             <nav className="hidden md:flex space-x-8">
-              <a href="#" className="text-red-700 font-medium">
+              <button 
+                onClick={() => handleNavigation('inicio')}
+                className={`font-medium transition-colors ${
+                  currentPage === 'inicio' 
+                    ? 'text-red-700' 
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
                 Inicio
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
+              </button>
+              <button 
+                onClick={() => handleNavigation('candidatos')}
+                className={`font-medium transition-colors ${
+                  currentPage === 'candidatos' 
+                    ? 'text-red-700' 
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
                 Candidatos
-              </a>
-              <a href="#" className="text-gray-700 hover:text-gray-900">
-                Donde votar
-              </a>
+              </button>
+              <button 
+                onClick={() => handleNavigation('partidos')}
+                className={`font-medium transition-colors ${
+                  currentPage === 'partidos' 
+                    ? 'text-red-700' 
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Partidos
+              </button>
+              <button 
+                onClick={() => handleNavigation('noticias')}
+                className={`font-medium transition-colors ${
+                  currentPage === 'noticias' 
+                    ? 'text-red-700' 
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Noticias
+              </button>
             </nav>
           </div>
 
-          <div className="flex items-center space-x-4">
-            <div className="hidden md:flex relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Buscar"
-                className="pl-10 pr-4 py-2 bg-gray-100 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500 w-64"
-              />
-            </div>
-
-            <button className="bg-red-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-red-700 transition-colors">
-              Iniciar Sesión
-            </button>
-          </div>
         </div>
       </div>
     </header>
