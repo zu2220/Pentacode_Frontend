@@ -1,30 +1,58 @@
 import { Search } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Header() {
+  const location = useLocation();
+
+  const isActive = (path: string) => location.pathname === path;
+
   return (
     <header className="bg-white shadow-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-8">
-            <div className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition">
               <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center">
                 <span className="text-white text-xl">✦</span>
               </div>
               <span className="text-lg font-semibold text-gray-900">
                 Elecciones Perú 2026
               </span>
-            </div>
+            </Link>
 
             <nav className="hidden md:flex space-x-8">
-              <a href="#" className="text-gray-700 hover:text-gray-900">
+              <Link
+                to="/"
+                className={`${
+                  isActive('/') ? 'text-red-600 font-medium' : 'text-gray-700 hover:text-gray-900'
+                }`}
+              >
                 Inicio
-              </a>
-              <a href="#" className="text-red-600 font-medium">
+              </Link>
+              <Link
+                to="/candidates"
+                className={`${
+                  isActive('/candidates') ? 'text-red-600 font-medium' : 'text-gray-700 hover:text-gray-900'
+                }`}
+              >
                 Candidatos
-              </a>
-              <a href="#" className="text-gray-700 hover:text-gray-900">
+              </Link>
+              <Link
+                to="/parties"
+                className={`${
+                  isActive('/parties') ? 'text-red-600 font-medium' : 'text-gray-700 hover:text-gray-900'
+                }`}
+              >
                 Partidos
-              </a>
+              </Link>
+              <Link
+                to="/news"
+                className={`${
+                  isActive('/news') ? 'text-red-600 font-medium' : 'text-gray-700 hover:text-gray-900'
+                }`}
+              >
+                Noticias
+              </Link>
             </nav>
           </div>
 
@@ -39,7 +67,7 @@ export default function Header() {
             </div>
 
             <button className="bg-red-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-red-700 transition-colors">
-              Iniciar Sesión
+              Planes de Gobierno
             </button>
           </div>
         </div>

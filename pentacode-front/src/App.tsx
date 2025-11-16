@@ -1,29 +1,21 @@
-import { useState } from 'react';
-import Header from './components/Header';
-import FilterSidebar from './components/FilterSidebar';
-import CandidateGrid from './components/CandidateGrid';
-import { mockCandidates } from './data/mockCandidates';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import CandidatesPage from './pages/CandidatesPage';
+import CandidateDetail from './pages/CandidateDetail';
+import PartiesPage from './pages/PartiesPage';
+import NewsPage from './pages/NewsPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(mockCandidates.length / 9);
-
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col md:flex-row gap-6">
-          <FilterSidebar />
-          <CandidateGrid
-            candidates={mockCandidates}
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
-          />
-        </div>
-      </main>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/candidates" element={<CandidatesPage />} />
+        <Route path="/candidate/:id" element={<CandidateDetail />} />
+        <Route path="/parties" element={<PartiesPage />} />
+        <Route path="/news" element={<NewsPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

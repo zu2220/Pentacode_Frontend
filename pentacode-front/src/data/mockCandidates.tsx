@@ -3,11 +3,56 @@ import type { Candidate } from '../types/candidate';
 export const mockCandidates: Candidate[] = [
   {
     id: 1,
-    name: 'Juan Pérez García',
-    party: 'Partido Innovación Cívica',
+    name: 'Keiko Fujimori',
+    party: 'Fuerza Popular',
     number: 1,
-    photoUrl: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400',
+    photoUrl: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Presidente',
+    birthDate: '25 de mayo de 1975',
+    birthPlace: 'Lima, Perú',
+    nationality: 'Peruana',
+    education: [
+      {
+        institution: 'Boston University',
+        degree: 'Maestría en Administración de Empresas (MBA)',
+        country: 'Estados Unidos',
+      },
+      {
+        institution: 'Stony Brook University',
+        degree: 'Bachiller en Administración de Empresas',
+        country: 'Estados Unidos',
+      },
+    ],
+    experience: [
+      {
+        title: 'Congresista de la República',
+        organization: 'Congreso del Perú',
+        period: '2006 - 2011',
+      },
+      {
+        title: 'Presidenta de Fuerza Popular',
+        organization: 'Fuerza Popular',
+        period: '2010 - Presente',
+      },
+    ],
+    proposals: [
+      {
+        sector: 'Economía',
+        description: 'Impulsar la inversión privada y reducir la burocracia.',
+      },
+      {
+        sector: 'Educación',
+        description: 'Reforma educativa y mejora salarial para docentes.',
+      },
+      {
+        sector: 'Salud',
+        description: 'Modernización de hospitales y acceso universal a la salud.',
+      },
+      {
+        sector: 'Seguridad',
+        description: 'Fortalecimiento de la policía y lucha contra el crimen.',
+      },
+    ],
   },
   {
     id: 2,
@@ -16,6 +61,41 @@ export const mockCandidates: Candidate[] = [
     number: 2,
     photoUrl: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Presidente',
+    birthDate: '10 de marzo de 1968',
+    birthPlace: 'Cusco, Perú',
+    nationality: 'Peruana',
+    education: [
+      {
+        institution: 'Universidad Nacional de San Agustín',
+        degree: 'Doctorado en Sociología',
+        country: 'Perú',
+      },
+    ],
+    experience: [
+      {
+        title: 'Gobernadora Regional',
+        organization: 'Región Cusco',
+        period: '2015 - 2022',
+      },
+    ],
+    proposals: [
+      {
+        sector: 'Economía',
+        description: 'Democratización de la economía y microfinanzas inclusivas.',
+      },
+      {
+        sector: 'Educación',
+        description: 'Educación intercultural y fortalecimiento de lenguas originarias.',
+      },
+      {
+        sector: 'Salud',
+        description: 'Medicina tradicional integrada al sistema de salud.',
+      },
+      {
+        sector: 'Seguridad',
+        description: 'Patrullaje comunitario y justicia intercultural.',
+      },
+    ],
   },
   {
     id: 3,
@@ -24,6 +104,41 @@ export const mockCandidates: Candidate[] = [
     number: 3,
     photoUrl: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Presidente',
+    birthDate: '5 de junio de 1972',
+    birthPlace: 'Arequipa, Perú',
+    nationality: 'Peruana',
+    education: [
+      {
+        institution: 'Universidad de San Agustín',
+        degree: 'Licenciatura en Derecho',
+        country: 'Perú',
+      },
+    ],
+    experience: [
+      {
+        title: 'Alcalde de Arequipa',
+        organization: 'Municipalidad de Arequipa',
+        period: '2019 - 2022',
+      },
+    ],
+    proposals: [
+      {
+        sector: 'Economía',
+        description: 'Impulso a pequeñas y medianas empresas regionales.',
+      },
+      {
+        sector: 'Educación',
+        description: 'Educación técnica vocacional para jóvenes.',
+      },
+      {
+        sector: 'Salud',
+        description: 'Prevención de enfermedades no transmisibles.',
+      },
+      {
+        sector: 'Seguridad',
+        description: 'Prevención del delito y reinserción social.',
+      },
+    ],
   },
   {
     id: 4,
@@ -32,6 +147,9 @@ export const mockCandidates: Candidate[] = [
     number: 4,
     photoUrl: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Congresista',
+    birthDate: '15 de julio de 1980',
+    birthPlace: 'Lima, Perú',
+    nationality: 'Peruana',
   },
   {
     id: 5,
@@ -40,6 +158,9 @@ export const mockCandidates: Candidate[] = [
     number: 5,
     photoUrl: 'https://images.pexels.com/photos/3778603/pexels-photo-3778603.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Congresista',
+    birthDate: '20 de febrero de 1975',
+    birthPlace: 'Trujillo, Perú',
+    nationality: 'Peruana',
   },
   {
     id: 6,
@@ -48,6 +169,9 @@ export const mockCandidates: Candidate[] = [
     number: 6,
     photoUrl: 'https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Congresista',
+    birthDate: '8 de agosto de 1978',
+    birthPlace: 'Tacna, Perú',
+    nationality: 'Peruana',
   },
   {
     id: 7,
@@ -56,6 +180,9 @@ export const mockCandidates: Candidate[] = [
     number: 7,
     photoUrl: 'https://images.pexels.com/photos/3777943/pexels-photo-3777943.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Congresista',
+    birthDate: '12 de noviembre de 1985',
+    birthPlace: 'Chimbote, Perú',
+    nationality: 'Peruana',
   },
   {
     id: 8,
@@ -64,6 +191,9 @@ export const mockCandidates: Candidate[] = [
     number: 8,
     photoUrl: 'https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Congresista',
+    birthDate: '30 de enero de 1979',
+    birthPlace: 'Ica, Perú',
+    nationality: 'Peruana',
   },
   {
     id: 9,
@@ -72,6 +202,9 @@ export const mockCandidates: Candidate[] = [
     number: 9,
     photoUrl: 'https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Congresista',
+    birthDate: '25 de abril de 1982',
+    birthPlace: 'Huancayo, Perú',
+    nationality: 'Peruana',
   },
   {
     id: 10,
@@ -80,5 +213,8 @@ export const mockCandidates: Candidate[] = [
     number: 10,
     photoUrl: 'https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Congresista',
+    birthDate: '18 de septiembre de 1983',
+    birthPlace: 'Pucallpa, Perú',
+    nationality: 'Peruana',
   },
 ];
