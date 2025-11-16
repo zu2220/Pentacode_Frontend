@@ -24,4 +24,5 @@ export interface Candidate {
     instagram?: string;
     linkedin?: string;
   };
+
 }

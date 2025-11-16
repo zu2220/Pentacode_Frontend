@@ -3,11 +3,12 @@ import type { Candidate } from '../types/candidate';
 export const mockCandidates: Candidate[] = [
   {
     id: 1,
-    name: 'Juan Pérez García',
-    party: 'Partido Innovación Cívica',
+    name: 'Keiko Fujimori',
+    party: 'Fuerza Popular',
     number: 1,
-    photoUrl: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400',
+    photoUrl: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Presidente',
+
     biography: 'Economista y político peruano con más de 20 años de experiencia en el sector público y privado. Ha dedicado su carrera a impulsar políticas de inclusión social y desarrollo económico sostenible. Fue Ministro de Economía (2018-2020) donde implementó reformas fiscales que redujeron la pobreza en 3.5%. Reconocido por su transparencia y compromiso con la lucha anticorrupción.',
     experience: [
       {
@@ -57,6 +58,7 @@ export const mockCandidates: Candidate[] = [
       instagram: 'https://instagram.com/juanperez',
       linkedin: 'https://linkedin.com/in/juanperezgarcia'
     }
+
   },
   {
     id: 2,
@@ -65,6 +67,7 @@ export const mockCandidates: Candidate[] = [
     number: 2,
     photoUrl: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Presidente',
+
     biography: 'Abogada especializada en derechos humanos y justicia social. Lideró importantes reformas en el sistema judicial peruano como presidenta de la Comisión de Justicia del Congreso. Reconocida defensora de los derechos de las comunidades indígenas y promotora de la igualdad de género. Ha trabajado con organizaciones internacionales en proyectos de gobernabilidad democrática.',
     experience: [
       {
@@ -108,6 +111,7 @@ export const mockCandidates: Candidate[] = [
       facebook: 'https://facebook.com/mariaquispeficial',
       instagram: 'https://instagram.com/mariaquispef'
     }
+
   },
   {
     id: 3,
@@ -116,6 +120,7 @@ export const mockCandidates: Candidate[] = [
     number: 3,
     photoUrl: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Presidente',
+
     biography: 'Ingeniero civil y empresario con amplia trayectoria en gestión pública. Fue alcalde de Lima (2015-2019) donde modernizó el transporte público e implementó el sistema de reciclaje más grande del país. Especialista en infraestructura y desarrollo urbano sostenible. Promotor de alianzas público-privadas para grandes proyectos nacionales.',
     experience: [
       {
@@ -159,6 +164,7 @@ export const mockCandidates: Candidate[] = [
       facebook: 'https://facebook.com/carlosmendozaoficial',
       linkedin: 'https://linkedin.com/in/carlosmendozatorres'
     }
+
   },
   {
     id: 4,
@@ -167,6 +173,9 @@ export const mockCandidates: Candidate[] = [
     number: 4,
     photoUrl: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Congresista',
+    birthDate: '15 de julio de 1980',
+    birthPlace: 'Lima, Perú',
+    nationality: 'Peruana',
   },
   {
     id: 5,
@@ -175,6 +184,9 @@ export const mockCandidates: Candidate[] = [
     number: 5,
     photoUrl: 'https://images.pexels.com/photos/3778603/pexels-photo-3778603.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Congresista',
+    birthDate: '20 de febrero de 1975',
+    birthPlace: 'Trujillo, Perú',
+    nationality: 'Peruana',
   },
   {
     id: 6,
@@ -183,6 +195,9 @@ export const mockCandidates: Candidate[] = [
     number: 6,
     photoUrl: 'https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Congresista',
+    birthDate: '8 de agosto de 1978',
+    birthPlace: 'Tacna, Perú',
+    nationality: 'Peruana',
   },
   {
     id: 7,
@@ -191,6 +206,9 @@ export const mockCandidates: Candidate[] = [
     number: 7,
     photoUrl: 'https://images.pexels.com/photos/3777943/pexels-photo-3777943.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Congresista',
+    birthDate: '12 de noviembre de 1985',
+    birthPlace: 'Chimbote, Perú',
+    nationality: 'Peruana',
   },
   {
     id: 8,
@@ -199,6 +217,9 @@ export const mockCandidates: Candidate[] = [
     number: 8,
     photoUrl: 'https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Congresista',
+    birthDate: '30 de enero de 1979',
+    birthPlace: 'Ica, Perú',
+    nationality: 'Peruana',
   },
   {
     id: 9,
@@ -207,6 +228,9 @@ export const mockCandidates: Candidate[] = [
     number: 9,
     photoUrl: 'https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Congresista',
+    birthDate: '25 de abril de 1982',
+    birthPlace: 'Huancayo, Perú',
+    nationality: 'Peruana',
   },
   {
     id: 10,
@@ -215,5 +239,8 @@ export const mockCandidates: Candidate[] = [
     number: 10,
     photoUrl: 'https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=400',
     position: 'Congresista',
+    birthDate: '18 de septiembre de 1983',
+    birthPlace: 'Pucallpa, Perú',
+    nationality: 'Peruana',
   },
 ];

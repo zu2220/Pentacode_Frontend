@@ -1,4 +1,5 @@
 import { FileText } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import type { Candidate } from '../types/candidate.ts'
 interface CandidateCardProps {
   candidate: Candidate;
@@ -29,13 +30,12 @@ export default function CandidateCard({ candidate, onViewProfile }: CandidateCar
       <p className="text-red-600 font-bold text-sm mb-4">
         N° {candidate.number}
       </p>
-
       <button 
         onClick={() => onViewProfile(candidate)}
         className="w-full bg-red-600 text-white py-2.5 rounded-lg font-medium hover:bg-red-700 transition-colors mb-3"
       >
         Ver Perfil
-      </button>
+      </Link>
 
       <button className="w-full flex items-center justify-center space-x-2 text-red-600 py-2 text-sm hover:bg-red-50 rounded-lg transition-colors">
         <FileText className="w-4 h-4" />
