@@ -1,4 +1,5 @@
 import { Search } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 interface HeaderProps {
   currentPage?: string;
@@ -27,7 +28,7 @@ export default function Header({ currentPage = 'inicio', onNavigate }: HeaderPro
               <span className="text-lg font-semibold text-gray-900">
                 Elecciones Perú 2026
               </span>
-            </div>
+            </Link>
 
             <nav className="hidden md:flex space-x-8">
               <button 
