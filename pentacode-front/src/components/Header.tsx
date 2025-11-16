@@ -16,14 +16,14 @@ export default function Header() {
             </div>
 
             <nav className="hidden md:flex space-x-8">
-              <a href="#" className="text-gray-700 hover:text-gray-900">
+              <a href="#" className="text-red-700 font-medium">
                 Inicio
               </a>
-              <a href="#" className="text-red-600 font-medium">
+              <a href="#" className="text-gray-600 hover:text-gray-900">
                 Candidatos
               </a>
               <a href="#" className="text-gray-700 hover:text-gray-900">
-                Partidos
+                Donde votar
               </a>
             </nav>
           </div>
