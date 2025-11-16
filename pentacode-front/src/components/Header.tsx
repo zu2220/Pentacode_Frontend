@@ -42,6 +42,16 @@ export default function Header({ currentPage = 'inicio', onNavigate }: HeaderPro
                 Inicio
               </button>
               <button 
+                onClick={() => handleNavigation('donde-votar')}
+                className={`font-medium transition-colors ${
+                  currentPage === 'donde-votar' 
+                    ? 'text-red-700' 
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Verifica tu local
+              </button>
+              <button 
                 onClick={() => handleNavigation('candidatos')}
                 className={`font-medium transition-colors ${
                   currentPage === 'candidatos' 

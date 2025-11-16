@@ -377,7 +377,11 @@ const faqData: FAQ[] = [
   }
 ];
 
-const Home = () => {
+interface HomeProps {
+  onNavigate?: (page: string) => void;
+}
+
+const Home = ({ onNavigate }: HomeProps) => {
   // Fecha objetivo: 12 de abril del 2026, 08:00 AM Perú (UTC-5)
   const targetDate = new Date('2026-04-12T08:00:00-05:00').getTime();
 
@@ -437,7 +441,9 @@ const Home = () => {
 
   // Función para redirigir a donde-votar
   const handleDondeVotar = () => {
-    window.location.href = '/donde-votar';
+    if (onNavigate) {
+      onNavigate('donde-votar');
+    }
   };
 
   return (

@@ -71,10 +71,13 @@ function PartyModal({ party, onClose }: { party: PartyData; onClose: () => void 
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4 transition-opacity duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
       onClick={handleBackdropClick}
     >
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 opacity-0 animate-fade-in">
+      <div 
+        className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 opacity-0 animate-fade-in"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="flex justify-between items-center p-4 md:p-6 border-b">
           <h2 className="text-xl md:text-2xl font-bold text-gray-900">{party.name}</h2>
           <button
@@ -142,11 +145,126 @@ function PartyModal({ party, onClose }: { party: PartyData; onClose: () => void 
   );
 }
 
+// --- Modal de Prioridades ---
+interface PrioritiesModalProps {
+  selectedPriorities: string[];
+  onTogglePriority: (priority: string) => void;
+  onClose: () => void;
+  onApply: () => void;
+}
+
+function PrioritiesModal({ selectedPriorities, onTogglePriority, onClose, onApply }: PrioritiesModalProps) {
+  const priorities = [
+    { id: 'Seguridad', icon: '🚨', label: 'Seguridad' },
+    { id: 'Economía', icon: '💰', label: 'Economía' },
+    { id: 'Salud', icon: '❤️', label: 'Salud' },
+    { id: 'Educación', icon: '🎒', label: 'Educación' },
+    { id: 'Transporte', icon: '🚍', label: 'Transporte' },
+    { id: 'Empleo', icon: '👷', label: 'Empleo' },
+    { id: 'Corrupción', icon: '⚖️', label: 'Corrupción' },
+    { id: 'Medio Ambiente', icon: '🌱', label: 'Medio Ambiente' },
+    { id: 'Innovación', icon: '💡', label: 'Innovación' },
+    { id: 'Infraestructura', icon: '🏗', label: 'Infraestructura' },
+  ];
+
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      onClick={handleBackdropClick}
+    >
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto animate-fadeIn"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="sticky top-0 bg-white border-b border-gray-200 p-6 rounded-t-2xl">
+          <div className="flex justify-between items-center">
+            <h2 className="text-2xl font-bold text-gray-900">Selecciona Prioridades</h2>
+            <button
+              onClick={onClose}
+              className="text-gray-400 hover:text-gray-600 transition-colors"
+              aria-label="Cerrar modal"
+            >
+              <X size={28} />
+            </button>
+          </div>
+          <p className="text-sm text-gray-600 mt-2">Selecciona una o más prioridades sociales</p>
+        </div>
+
+        <div className="p-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            {priorities.map((priority) => {
+              const isSelected = selectedPriorities.includes(priority.id);
+              return (
+                <button
+                  key={priority.id}
+                  onClick={() => onTogglePriority(priority.id)}
+                  className={`flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-200 ${
+                    isSelected
+                      ? 'border-red-600 bg-red-50 shadow-md scale-105'
+                      : 'border-gray-200 bg-white hover:border-red-300 hover:shadow-sm'
+                  }`}
+                >
+                  <span className="text-4xl mb-2">{priority.icon}</span>
+                  <span className={`text-sm font-semibold text-center ${
+                    isSelected ? 'text-red-700' : 'text-gray-700'
+                  }`}>
+                    {priority.label}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="sticky bottom-0 bg-gray-50 border-t border-gray-200 p-6 rounded-b-2xl flex gap-3">
+          <button
+            onClick={onClose}
+            className="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-100 transition-colors"
+          >
+            Cerrar
+          </button>
+          <button
+            onClick={onApply}
+            className="flex-1 px-6 py-3 bg-red-600 text-white font-semibold rounded-xl hover:bg-red-700 transition-colors shadow-md"
+          >
+            Aplicar filtros
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // --- Componente Principal de la Aplicación ---
 export default function PartiesPage() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedRegion, setSelectedRegion] = useState('Todos');
+  const [selectedPriorities, setSelectedPriorities] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPrioritiesModalOpen, setIsPrioritiesModalOpen] = useState(false);
   const [selectedParty, setSelectedParty] = useState<PartyData | null>(null);
+
+  // Handlers para el modal de prioridades
+  const handleTogglePriority = (priority: string) => {
+    setSelectedPriorities((prev) =>
+      prev.includes(priority)
+        ? prev.filter((p) => p !== priority)
+        : [...prev, priority]
+    );
+  };
+
+  const handleApplyPriorities = () => {
+    setIsPrioritiesModalOpen(false);
+  };
+
+  const handleClosePrioritiesModal = () => {
+    setIsPrioritiesModalOpen(false);
+  };
 
   const parties = [
     {
@@ -313,19 +431,63 @@ export default function PartiesPage() {
               className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
             />
           </div>
-          <div className="flex flex-wrap gap-3">
-            <button className="px-4 py-2 border border-gray-300 rounded-full text-gray-700 hover:bg-gray-100 transition font-medium flex items-center gap-2">
-              <span>⚙️</span> Ideología
-            </button>
-            <button className="px-4 py-2 border border-gray-300 rounded-full text-gray-700 hover:bg-gray-100 transition font-medium flex items-center gap-2">
-              <span>📍</span> Región
-            </button>
-            <button className="px-4 py-2 border border-gray-300 rounded-full text-gray-700 hover:bg-gray-100 transition font-medium flex items-center gap-2">
-              <span>⭐</span> Prioridad Social
-            </button>
-            <button className="px-4 py-2 bg-red-100 text-red-600 rounded-full hover:bg-red-200 transition font-medium">
-              Todos
-            </button>
+          
+          {/* Filtros */}
+          <div className="flex flex-col md:flex-row gap-4">
+            {/* Select de Región */}
+            <div className="flex-1">
+              <label htmlFor="region" className="block text-sm font-semibold text-gray-700 mb-2">
+                📍 Región
+              </label>
+              <select
+                id="region"
+                value={selectedRegion}
+                onChange={(e) => setSelectedRegion(e.target.value)}
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition shadow-sm hover:shadow-md bg-white font-medium text-gray-700"
+              >
+                <option value="Todos">Todos</option>
+                <option value="Costa">Costa</option>
+                <option value="Sierra">Sierra</option>
+                <option value="Selva">Selva</option>
+              </select>
+            </div>
+
+            {/* Prioridad Social con "Ver más" */}
+            <div className="flex-1">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                ⭐ Prioridad Social
+              </label>
+              <div className="space-y-2">
+                {/* 3 principales categorías */}
+                <div className="flex flex-wrap gap-2">
+                  {['Seguridad', 'Economía', 'Salud'].map((priority) => (
+                    <button
+                      key={priority}
+                      onClick={() => handleTogglePriority(priority)}
+                      className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+                        selectedPriorities.includes(priority)
+                          ? 'bg-red-600 text-white shadow-md'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      {priority}
+                    </button>
+                  ))}
+                </div>
+                {/* Botón "Ver más" */}
+                <button
+                  onClick={() => setIsPrioritiesModalOpen(true)}
+                  className="text-red-600 hover:text-red-700 text-sm font-semibold underline hover:no-underline transition-all flex items-center gap-1"
+                >
+                  Ver más... 
+                  {selectedPriorities.length > 3 && (
+                    <span className="bg-red-100 text-red-600 px-2 py-0.5 rounded-full text-xs">
+                      +{selectedPriorities.length - 3}
+                    </span>
+                  )}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -388,6 +550,15 @@ export default function PartiesPage() {
 
       {isModalOpen && selectedParty && (
         <PartyModal party={selectedParty} onClose={handleCloseModal} />
+      )}
+      
+      {isPrioritiesModalOpen && (
+        <PrioritiesModal
+          selectedPriorities={selectedPriorities}
+          onTogglePriority={handleTogglePriority}
+          onClose={handleClosePrioritiesModal}
+          onApply={handleApplyPriorities}
+        />
       )}
     </>
   );

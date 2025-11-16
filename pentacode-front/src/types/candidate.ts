@@ -6,28 +6,23 @@ export interface Candidate {
   photoUrl: string;
   position: string;
   region?: string;
-  birthDate?: string;
-  birthPlace?: string;
-  nationality?: string;
-  education?: Education[];
-  experience?: Experience[];
-  proposals?: Proposal[];
-}
+  biography?: string;
+  experience?: Array<{
+    role: string;
+    organization: string;
+    period: string;
+  }>;
+  education?: Array<{
+    degree: string;
+    institution: string;
+    year: string;
+  }>;
+  proposals?: string[];
+  socialMedia?: {
+    twitter?: string;
+    facebook?: string;
+    instagram?: string;
+    linkedin?: string;
+  };
 
-export interface Education {
-  institution: string;
-  degree: string;
-  country?: string;
-}
-
-export interface Experience {
-  title: string;
-  organization: string;
-  period: string;
-}
-
-export interface Proposal {
-  sector: string;
-  description: string;
-  icon?: string;
 }
