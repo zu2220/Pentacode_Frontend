@@ -2,9 +2,10 @@ import { FileText } from 'lucide-react';
 import type { Candidate } from '../types/candidate.ts'
 interface CandidateCardProps {
   candidate: Candidate;
+  onViewProfile: (candidate: Candidate) => void;
 }
 
-export default function CandidateCard({ candidate }: CandidateCardProps) {
+export default function CandidateCard({ candidate, onViewProfile }: CandidateCardProps) {
   return (
     <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 flex flex-col items-center">
       <div className="relative mb-4">
@@ -29,7 +30,10 @@ export default function CandidateCard({ candidate }: CandidateCardProps) {
         N° {candidate.number}
       </p>
 
-      <button className="w-full bg-red-600 text-white py-2.5 rounded-lg font-medium hover:bg-red-700 transition-colors mb-3">
+      <button 
+        onClick={() => onViewProfile(candidate)}
+        className="w-full bg-red-600 text-white py-2.5 rounded-lg font-medium hover:bg-red-700 transition-colors mb-3"
+      >
         Ver Perfil
       </button>
 

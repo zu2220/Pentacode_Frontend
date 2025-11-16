@@ -9,3 +9,42 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Animación fadeIn */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Estilos para el widget de Chatbase */
+/* Ocultar el botón por defecto de Chatbase y usar nuestro botón personalizado */
+#chatbase-bubble-button {
+  display: none !important;
+}
+
+/* Asegurar que el iframe del chatbot no interfiera con nuestro botón */
+#chatbase-bubble-window {
+  bottom: 90px !important;
+  right: 24px !important;
+  z-index: 40 !important;
+}
+
+/* Responsive: ajustar en pantallas pequeñas */
+@media (max-width: 640px) {
+  #chatbase-bubble-window {
+    bottom: 80px !important;
+    right: 16px !important;
+    width: calc(100vw - 32px) !important;
+    max-width: 400px !important;
+  }
+}

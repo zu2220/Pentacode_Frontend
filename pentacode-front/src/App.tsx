@@ -4,6 +4,8 @@ import Home from './components/Home';
 import CandidatesPage from './pages/CandidatesPage';
 import PartiesPage from './pages/PartiesPage';
 import NewsPage from './pages/NewsPage';
+import LugarVotacion from './components/lugar_votacion';
+import ChatbotWidget from './components/ChatbotWidget';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<string>('inicio');
@@ -11,15 +13,17 @@ function App() {
   const renderPage = () => {
     switch (currentPage) {
       case 'inicio':
-        return <Home />;
+        return <Home onNavigate={setCurrentPage} />;
       case 'candidatos':
         return <CandidatesPage />;
       case 'partidos':
         return <PartiesPage />;
       case 'noticias':
         return <NewsPage />;
+      case 'donde-votar':
+        return <LugarVotacion />;
       default:
-        return <Home />;
+        return <Home onNavigate={setCurrentPage} />;
     }
   };
 
@@ -27,6 +31,7 @@ function App() {
     <div className="min-h-screen bg-gray-50">
       <Header currentPage={currentPage} onNavigate={setCurrentPage} />
       {renderPage()}
+      <ChatbotWidget />
     </div>
   );
 }
