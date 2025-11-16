@@ -28,7 +28,7 @@ export default function Header({ currentPage = 'inicio', onNavigate }: HeaderPro
               <span className="text-lg font-semibold text-gray-900">
                 Elecciones Perú 2026
               </span>
-            </Link>
+            </div>
 
             <nav className="hidden md:flex space-x-8">
               <button 
